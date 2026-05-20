@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>twearks GG | Loja de Contas e Jogos Digitais</title>
+  
+  <!-- CSS Tailwind de Alta Performance -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts - Inter e JetBrains Mono para Visual Hacker/Premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-mono-custom { font-family: 'JetBrains Mono', monospace; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-neutral-950">
+
+  <div id="store-app" class="flex-grow flex flex-col">
+    <!-- HEADER BAR -->
+    <header class="sticky top-0 z-40 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-900 px-4 py-3 sm:px-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="#" onclick="goHome(event)" class="flex items-center gap-2 group">
+          <div class="p-1.5 bg-emerald-500/10 rounded-lg border border-emerald-500/20 group-hover:border-emerald-500/50 transition">
+            <i data-lucide="gamepad-2" class="w-6 h-6 text-emerald-400"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-extrabold tracking-wider text-lg leading-none font-mono-custom text-white">TWEARKS<span class="text-emerald-400">.GG</span></span>
+            <span class="text-[9px] font-mono-custom text-neutral-500 tracking-widest leading-none mt-0.5 uppercase">Loja de Contas</span>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/55000000000" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white transition px-3 py-1.5 bg-neutral-900 border border-neutral-800 rounded-lg font-mono-custom">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-400"></i> SUPORTE WHATSAPP
+          </a>
+          
+          <button onclick="toggleCart()" class="relative p-2.5 bg-neutral-900 hover:bg-neutral-850 rounded-xl border border-neutral-800 text-neutral-300 hover:text-emerald-400 transition cursor-pointer">
+            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+            <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-emerald-500 text-neutral-950 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full min-w-4 text-center leading-none hidden">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 flex-grow w-full">
+      <!-- CATALOGUE VIEW -->
+      <section id="catalogue-view" class="block space-y-8">
+        <div class="relative bg-neutral-900/30 rounded-2xl border border-neutral-900 overflow-hidden shadow-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="absolute inset-0 bg-radial-at-t from-emerald-500/5 via-transparent to-transparent pointer-events-none"></div>
+          <div class="space-y-4 max-w-xl text-center md:text-left z-10">
+            <div class="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full py-1 px-3 text-xs font-mono-custom font-bold uppercase tracking-wider">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 animate-pulse"></i> ATÉ 90% DE DESCONTO EM CHAVES WG
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+              Os Maiores Títulos Digitais com <span class="bg-gradient-to-r from-emerald-400 to-teal-400 text-transparent bg-clip-text">Preço Justo</span>
+            </h1>
+            <p class="text-neutral-400 text-sm leading-relaxed sm:text-base">
+              Ativação em todas as plataformas de forma rápida, segura e com entrega imediata via PIX. Aproveite nossas ofertas em chaves globais resgatáveis e contas completas.
+            </p>
+          </div>
+          <div class="flex flex-col items-center gap-3 bg-neutral-900/55 border border-neutral-800 p-5 rounded-2xl w-full max-w-xs backdrop-blur shadow-lg z-10">
+            <span class="text-xs font-mono-custom tracking-wider text-neutral-400 uppercase">⚡ COMPRA SEGURA EM SEGUNDOS</span>
+            <div class="flex items-center gap-2 bg-black/40 border border-neutral-800 py-2 px-4 rounded-xl w-full">
+              <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+              <span class="text-[11px] font-mono-custom text-neutral-300 leading-tight">SITE INTEGRADO COM PIX SEGURO</span>
+            </div>
+            <div class="flex items-center gap-2 bg-black/40 border border-neutral-800 py-2 px-4 rounded-xl w-full">
+              <i data-lucide="zap" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+              <span class="text-[11px] font-mono-custom text-neutral-300 leading-tight">ENTREGA AUTOMÁTICA VIA DISCORD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between border-b border-neutral-900 pb-6">
+          <div class="flex-grow max-w-lg relative">
+            <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500"></i>
+            <input type="text" id="search-input" oninput="applyFilters()" placeholder="Procura jogo, conta compartilhada ou chave de ativação..." class="w-full pl-10 pr-4 py-2.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 focus:border-emerald-500/50 rounded-xl text-sm placeholder-neutral-500 outline-none transition font-mono-custom">
+          </div>
+          
+          <div class="flex flex-wrap gap-2 overflow-x-auto py-1">
+            <button onclick="selectCategory('all')" id="cat-all" class="category-btn active px-4 py-1.5 rounded-lg text-xs font-mono-custom font-bold border transition bg-emerald-500 text-neutral-950 border-emerald-500">TODOS</button>
+            <button onclick="selectCategory('Ação / Aventura / Mundo Aberto')" id="cat-action" class="category-btn px-4 py-1.5 rounded-lg text-xs font-mono-custom font-bold border border-neutral-800 bg-neutral-900 text-neutral-400 transition">AÇÃO / AVENTURA</button>
+            <button onclick="selectCategory('RPG de Ação / Soulslike')" id="cat-soulslike" class="category-btn px-4 py-1.5 rounded-lg text-xs font-mono-custom font-bold border border-neutral-800 bg-neutral-900 text-neutral-400 transition">SOULSLIKE</button>
+            <button onclick="selectCategory('Corrida / Simulação / Mundo Aberto')" id="cat-racing" class="category-btn px-4 py-1.5 rounded-lg text-xs font-mono-custom font-bold border border-neutral-800 bg-neutral-900 text-neutral-400 transition">CORRIDA</button>
+            <button onclick="selectCategory('Esportes / Futebol / Simulação')" id="cat-sports" class="category-btn px-4 py-1.5 rounded-lg text-xs font-mono-custom font-bold border border-neutral-800 bg-neutral-900 text-neutral-400 transition">ESPORTES</button>
+          </div>
+        </div>
+
+        <!-- GAMES GRID -->
+        <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        <div id="no-results" class="hidden text-center py-16 border border-dashed border-neutral-800 rounded-2xl bg-neutral-900/10">
+          <i data-lucide="alert-circle" class="w-12 h-12 text-neutral-600 mx-auto mb-4"></i>
+          <p class="text-neutral-400 font-mono-custom text-sm">Nenhum título encontrado.</p>
+        </div>
+      </section>
+
+      <!-- DETAIL VIEW -->
+      <section id="detail-view" class="hidden space-y-6"></section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-neutral-950 border-t border-neutral-900/65 py-8 mt-12 px-4 text-center sm:text-left">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 justify-center md:justify-start">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+            <span class="font-extrabold tracking-wider font-mono-custom text-xs text-white">TWEARKS<span class="text-emerald-400">.GG</span></span>
+          </div>
+          <p class="text-neutral-500 font-mono-custom text-[10px] tracking-wide max-w-sm">
+            © 2026 twearks GG. Todos os direitos reservados. Entregas e suporte automatizados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CART PANEL -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleCart()"></div>
+      <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-md bg-neutral-950 border-l border-neutral-900 flex flex-col shadow-2xl">
+          <div class="px-6 py-5 border-b border-neutral-900 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <i data-lucide="shopping-bag" class="w-5 h-5 text-emerald-400"></i>
+              <h2 class="text-base font-bold text-white font-mono-custom leading-none">SEU CARRINHO</h2>
+            </div>
+            <button onclick="toggleCart()" class="text-neutral-400 hover:text-white transition p-1 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+          </div>
+
+          <div id="cart-items-wrapper" class="flex-grow overflow-y-auto px-6 py-4 space-y-4"></div>
+
+          <div id="cart-empty-state" class="flex-grow flex flex-col justify-center items-center p-8 space-y-3">
+            <i data-lucide="shopping-cart" class="w-12 h-12 text-neutral-800"></i>
+            <p class="text-sm font-mono-custom text-neutral-500">Seu carrinho está vazio.</p>
+          </div>
+
+          <div id="cart-summary-wrapper" class="p-6 border-t border-neutral-900 bg-neutral-950/95 space-y-4 hidden">
+            <div class="flex justify-between items-center font-mono-custom">
+              <span class="text-xs text-neutral-400">VALOR TOTAL DO PEDIDO:</span>
+              <span id="cart-total" class="text-xl font-extrabold text-white">R$ 0,00</span>
+            </div>
+            
+            <div class="space-y-2">
+              <label class="block text-[10px] font-mono-custom text-neutral-400 uppercase">E-mail para Envio do Produto:</label>
+              <input type="email" id="checkout-email" placeholder="seu-email@exemplo.com" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-white placeholder-neutral-600 outline-none focus:border-emerald-500/50 font-mono-custom transition">
+            </div>
+
+            <button onclick="handleCheckout()" class="w-full py-3 bg-emerald-500 text-neutral-950 hover:bg-emerald-400 active:scale-95 transition rounded-xl font-mono-custom font-bold text-xs flex justify-center items-center gap-2 cursor-pointer shadow-lg">
+              <i data-lucide="zap" class="w-4 h-4"></i> FINALIZAR COMPRA VIA PIX
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="notification-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-neutral-900/95 border border-emerald-500/30 text-neutral-200 py-3 px-5 rounded-xl font-mono-custom text-xs flex items-center gap-2.5 transition-transform translate-y-24 max-w-sm">
+      <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+      <span id="toast-message">Adicionado ao carrinho!</span>
+    </div>
+  </div>
+
+  <script>
+    const gamesData = [
+      {
+        id: "forza-horizon-6",
+        title: "Forza Horizon 6 (Key)",
+        category: "Corrida / Simulação / Mundo Aberto",
+        description: "Explore o futuro das corridas itinerantes em paisagens deslumbrantes com gráficos ultrarrealistas e centenas de supercarros oficiais.",
+        aboutText: "Forza Horizon 6 redefine a simulação de direção arcade com física avançada de pneus, ciclo climático dinâmico em tempo real e um mapa massivo inspirado nos biomas vibrantes da América do Sul. Vivencie corridas eletrizantes, festivais monumentais e o modo de criação de pistas mais avançado da franquia.",
+        imageUrl: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600",
+        bannerUrl: "https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&q=80&w=1600",
+        rating: 4.9,
+        releaseYear: "2026",
+        publisher: "Xbox Game Studios",
+        platforms: ["PC", "Xbox Series X", "Xbox Series S"],
+        features: ["4K Ultra HD", "Ray Tracing Integrado", "Otimizado para Series X|S", "Multiplayer Online", "Cross-Play"],
+        variants: [
+          { id: "forza-6-key", name: "Forza Horizon 6 (Key Resgatável)", price: 31.90, originalPrice: 319.90, discount: "-90%", stockType: "ilimitado" },
+          { id: "forza-6-shared", name: "Forza Horizon 6 (Conta Compartilhada)", price: 31.90, originalPrice: 319.90, discount: "-90%", stockType: "ilimitado" }
+        ]
+      },
+      {
+        id: "gta-6",
+        title: "GTA VI (Key / Pré-Venda Premium)",
+        category: "Ação / Aventura / Mundo Aberto",
+        description: "A maior e mais imersiva evolução da Rockstar Games nas luzes vibrantes de Vice City e além, no estado de Leonida.",
+        aboutText: "Grand Theft Auto VI apresenta uma narrativa cinematográfica impressionante protagonizada por Lucia e Jason. Viva no submundo do crime simulado em tempo real com o mais alto nível de IA de pedestres, tráfego ultrarrealista e física inovadora.",
+        imageUrl: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600",
+        bannerUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=1600",
+        rating: 5.0,
+        releaseYear: "2026",
+        publisher: "Rockstar Games",
+        platforms: ["PC", "Xbox Series X", "PS5"],
+        features: ["Ambiente HDR Avançado", "Áudio Espacial 3D", "Rockstar Advanced Physics", "Leonida Online"],
+        variants: [
+          { id: "gta-6-standard", name: "GTA VI (Chave Ativação Steam)", price: 59.90, originalPrice: 399.90, discount: "-85%", stockType: "ilimitado" },
+          { id: "gta-6-shared", name: "GTA VI (Conta Acesso Offline Completo)", price: 49.90, originalPrice: 199.90, discount: "-75%", stockType: "limitado", stockCount: 154 }
+        ]
+      },
+      {
+        id: "elden-ring-erdtree",
+        title: "Elden Ring + Shadow of the Erdtree",
+        category: "RPG de Ação / Soulslike",
+        description: "A versão definitiva contendo o jogo do ano aclamado pela crítica e a colossal expansão nas Terras das Sombras.",
+        aboutText: "Ganhador de mais de 300 prêmios de Jogo do Ano, Elden Ring se junta à expansão Shadow of the Erdtree para guiar o Maculado por mistérios sombrios e chefes incríveis.",
+        imageUrl: "https://images.unsplash.com/photo-1655821888788-6107699e173b?auto=format&fit=crop&q=80&w=600",
+        bannerUrl: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1600",
+        rating: 4.9,
+        releaseYear: "2024",
+        publisher: "Bandai Namco",
+        platforms: ["PC", "Xbox Series X|S", "PS5"],
+        features: ["Vencedor do GOTY", "Mundo Aberto Colossal", "Coop Online", "Shadow Realm DLC Inclusa"],
+        variants: [
+          { id: "elden-ed-key", name: "Elden Ring + DLC (Steam Key)", price: 48.90, originalPrice: 299.90, discount: "-83%", stockType: "ilimitado" },
+          { id: "elden-ed-shared", name: "Elden Ring + DLC (Conta Xbox)", price: 29.90, originalPrice: 149.90, discount: "-80%", stockType: "limitado", stockCount: 42 }
+        ]
+      }
+    ];
+
+    let currentCategory = "all";
+    let cart = [];
+    let selectedVariantGlobalId = "";
+
+    window.onload = () => {
+      try {
+        const stored = localStorage.getItem("twearks-cart");
+        if (stored) cart = JSON.parse(stored);
+      } catch(e){}
+      renderCatalogue();
+      updateCartUI();
+      const urlParams = new URLSearchParams(window.location.search);
+      const gameParam = urlParams.get("game");
+      if (gameParam) showGameDetails(gameParam);
+    };
+
+    function renderCatalogue() {
+      const grid = document.getElementById("games-grid");
+      const searchVal = document.getElementById("search-input").value.toLowerCase();
+      let filtered = gamesData;
+      if (currentCategory !== "all") {
+        filtered = filtered.filter(g => g.category === currentCategory);
+      }
+      if (searchVal) {
+        filtered = filtered.filter(g => g.title.toLowerCase().includes(searchVal) || g.description.toLowerCase().includes(searchVal));
+      }
+      if (filtered.length === 0) {
+        document.getElementById("no-results").classList.remove("hidden");
+        grid.innerHTML = "";
+        return;
+      }
+      document.getElementById("no-results").classList.add("hidden");
+      grid.innerHTML = filtered.map(game => {
+        const minPrice = game.variants.reduce((min, v) => v.price < min ? v.price : min, game.variants[0].price);
+        return `
+          <div class="bg-neutral-900/30 rounded-2xl border border-neutral-900 overflow-hidden hover:border-neutral-850 transition duration-300 flex flex-col justify-between p-1">
+            <div onclick="showGameDetails('${game.id}')" class="relative aspect-video overflow-hidden cursor-pointer">
+              <img src="${game.imageUrl}" alt="${game.title}" class="w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-emerald-500 text-neutral-950 font-mono-custom text-[10px] font-extrabold px-2 py-0.5 rounded-full">${game.variants[0].discount}</span>
+            </div>
+            <div class="p-4 flex-grow flex flex-col justify-between space-y-4">
+              <div>
+                <span class="block text-[8px] font-mono-custom uppercase tracking-wider text-neutral-500">${game.category}</span>
+                <h3 onclick="showGameDetails('${game.id}')" class="text-sm font-bold text-white hover:text-emerald-400 cursor-pointer transition mt-1">${game.title}</h3>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-900/60 pt-3">
+                <div class="flex flex-col">
+                  <span class="text-[9px] font-mono-custom text-neutral-500 line-through">R$ ${game.variants[0].originalPrice.toFixed(2)}</span>
+                  <span class="text-base font-mono-custom font-extrabold text-white">R$ ${minPrice.toFixed(2)}</span>
+                </div>
+                <button onclick="showGameDetails('${game.id}')" class="px-3 py-1.5 bg-neutral-900 border border-neutral-800 text-neutral-300 rounded-lg text-xs font-mono-custom flex items-center gap-1">VER MAIS</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function selectCategory(category) {
+      currentCategory = category;
+      const buttons = document.querySelectorAll(".category-btn");
+      buttons.forEach(btn => {
+        btn.classList.remove("bg-emerald-500", "text-neutral-950", "border-emerald-500");
+        btn.classList.add("border-neutral-800", "bg-neutral-900", "text-neutral-400");
+      });
+      event.target.classList.add("bg-emerald-500", "text-neutral-950", "border-emerald-500");
+        btn.classList.add("border-neutral-800", "bg-neutral-900", "text-neutral-400");
+      });
+      event.target.classList.add("bg-emerald-500", "text-neutral-950", "border-emerald-500");
+      renderCatalogue();
+    }
+
+    function applyFilters() { renderCatalogue(); }
+
+    function showGameDetails(gameId) {
+      const g = gamesData.find(game => game.id === gameId);
+      if (!g) return;
+      selectedVariantGlobalId = g.variants[0].id;
+      const url = new URL(window.location.href);
+      url.searchParams.set("game", gameId);
+      window.history.replaceState({}, "", url.toString());
+      document.getElementById("catalogue-view").classList.add("hidden");
+      document.getElementById("detail-view").classList.remove("hidden");
+      renderGameDetailView(g);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderGameDetailView(g) {
+      const selectedVariant = g.variants.find(v => v.id === selectedVariantGlobalId) || g.variants[0];
+      const detailSec = document.getElementById("detail-view");
+      detailSec.innerHTML = `
+        <div class="bg-neutral-900/10 rounded-2xl border border-neutral-900 p-6 space-y-6">
+          <div class="flex items-center justify-between">
+            <button onclick="goHome(event)" class="px-3.5 py-1.5 bg-neutral-900 text-neutral-300 rounded-lg text-xs font-mono-custom font-bold flex items-center gap-1 border border-neutral-800"><i data-lucide="arrow-left" class="w-4 h-4"></i> VOLTAR</button>
+            <button onclick="copyShareLink('${g.id}')" id="share-btn" class="px-3.5 py-1.5 bg-neutral-900 text-neutral-300 rounded-lg text-xs font-mono-custom font-bold flex items-center gap-1 border border-neutral-800"><i data-lucide="share-2" class="w-4 h-4"></i> COMPARTILHAR JOGO</button>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="relative rounded-xl border border-neutral-900 overflow-hidden aspect-video">
+                <img src="${g.bannerUrl}" alt="${g.title}" class="w-full h-full object-cover">
+              </div>
+              <div class="space-y-3">
+                <h3 class="text-sm font-mono-custom font-bold text-white uppercase">Sobre</h3>
+                <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed">${g.aboutText}</p>
+              </div>
+            </div>
+            <div class="lg:col-span-5 bg-neutral-900/20 border border-neutral-900 rounded-2xl p-6 self-start space-y-4">
+              <div class="space-y-2">
+                <span class="block text-[10px] font-mono-custom text-neutral-400 uppercase">Escolha a Opção:</span>
+                ${g.variants.map(v => `
+                  <div onclick="selectVariant('${g.id}', '${v.id}')" class="p-3 rounded-xl border cursor-pointer transition ${v.id === selectedVariantGlobalId ? 'bg-emerald-500/5 border-emerald-500 text-white' : 'bg-neutral-900 border-neutral-850 text-neutral-400'}">
+                    <div class="flex justify-between items-center text-xs">
+                      <span>${v.name}</span>
+                      <span class="text-emerald-400">${v.discount}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+              <button onclick="addToCart('${g.id}', '${selectedVariant.id}')" class="w-full py-3 bg-neutral-900 text-emerald-400 border border-neutral-800 font-mono-custom font-bold text-xs rounded-xl flex justify-center items-center gap-1">ADICIONAR AO CARRINHO</button>
+              <button onclick="buyInstant('${g.id}', '${selectedVariant.id}')" class="w-full py-3 bg-emerald-500 text-neutral-1000 font-mono-custom font-bold text-xs rounded-xl flex justify-center items-center gap-1">COMPRAR VIA PIX</button>
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function selectVariant(gameId, variantId) {
+      selectedVariantGlobalId = variantId;
+      const g = gamesData.find(game => game.id === gameId);
+      if (g) renderGameDetailView(g);
+    }
+
+    function goHome(e) {
+      if (e) e.preventDefault();
+      const url = new URL(window.location.href);
+      url.searchParams.delete("game");
+      window.history.replaceState({}, "", url.toString());
+      document.getElementById("detail-view").classList.add("hidden");
+      document.getElementById("catalogue-view").classList.remove("hidden");
+      renderCatalogue();
+    }
+
+    function copyShareLink(gameId) {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set("game", gameId);
+        navigator.clipboard.writeText(url.toString());
+        showToast("LINK COPIADO COBIÇADO COM SUCESSO!");
+      } catch (e){ alert("Copie a URL do seu navegador."); }
+    }
+
+    function addToCart(gameId, variantId, quiet=false) {
+      const g = gamesData.find(game => game.id === gameId);
+      const v = g.variants.find(variant => variant.id === variantId);
+      const existing = cart.find(item => item.gameId === gameId && item.variantId === variantId);
+      if (existing) { existing.quantity += 1; }
+      else {
+        cart.push({ gameId, variantId, title: g.title, variantName: v.name, price: v.price, imageUrl: g.imageUrl, quantity: 1 });
+      }
+      saveCart(); updateCartUI();
+      if (!quiet) showToast(`Adicionado: ${g.title}`);
+    }
+
+    function buyInstant(gameId, variantId) {
+      cart = []; addToCart(gameId, variantId, true); toggleCart(true);
+    }
+
+    function saveCart() { localStorage.setItem("twearks-cart", JSON.stringify(cart)); }
+
+    function updateCartUI() {
+      const itemsCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+      const badge = document.getElementById("cart-badge");
+      if (itemsCount > 0) { badge.innerText = itemsCount; badge.classList.remove("hidden"); }
+      else { badge.classList.add("hidden"); }
+
+      const wrapper = document.getElementById("cart-items-wrapper");
+      const empty = document.getElementById("cart-empty-state");
+      const summary = document.getElementById("cart-summary-wrapper");
+
+      if (cart.length === 0) {
+        wrapper.innerHTML = "";
+        empty.classList.remove("hidden");
+        summary.classList.add("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+      summary.classList.remove("hidden");
+      wrapper.innerHTML = cart.map((item, index) => `
+        <div class="flex gap-4 p-3 bg-neutral-900 border border-neutral-850 rounded-xl">
+          <img src="${item.imageUrl}" class="w-12 h-12 rounded object-cover">
+          <div class="flex-grow">
+            <h4 class="text-xs font-bold text-white line-clamp-1">${item.title}</h4>
+            <span class="text-[9px] text-neutral-400">${item.variantName}</span>
+          </div>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      document.getElementById("cart-total").innerText = `R$ ${total.toFixed(2)}`;
+    }
+
+    function toggleCart(forceOpen=false) {
+      const drawer = document.getElementById("cart-drawer");
+      if (forceOpen || drawer.classList.contains("hidden")) drawer.classList.remove("hidden");
+      else drawer.classList.add("hidden");
+    }
+
+    function handleCheckout() {
+      const email = document.getElementById("checkout-email").value.trim();
+      if (!email || !email.includes("@")) { alert("E-mail inválido."); return; }
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      alert(`⚡ PEDIDO ENVIADO!\nCódigo Pix Copia e Cola gerado para: ${email}.\nTotal: R$ ${total.toFixed(2)}`);
+      cart = []; saveCart(); updateCartUI(); toggleCart(); goHome();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("notification-toast");
+      document.getElementById("toast-message").innerText = msg;
+      toast.classList.remove("translate-y-24");
+      setTimeout(() => toast.classList.add("translate-y-24"), 3000);
+    }
+  </script>
+</body>
+</html>
